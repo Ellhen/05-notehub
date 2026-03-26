@@ -1,0 +1,15 @@
+{
+	"useTabs": true,
+	"semi": false,
+	"tabWidth": 2,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"arrowParents": "avoid",
+	"singleAttributePerLine": true,
+	"printWidth": 80,
+	"proseWrap": "always",
+	"bracketSpacing": true,
+
+	"importOrderSeparation": true,
+	"importOrderSorSpecifiers": true
+}
