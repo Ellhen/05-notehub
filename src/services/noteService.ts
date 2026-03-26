@@ -32,11 +32,6 @@ export interface CreateNoteParams {
 	tag: NoteTag
 }
 
-export interface DeleteNoteResponse {
-	id: string
-	message: string
-}
-
 export const fetchNotes = async ({
 	page,
 	perPage,
@@ -47,7 +42,7 @@ export const fetchNotes = async ({
 			params: {
 				page,
 				perPage,
-				...(search && search.trim() !== '' ? { search } : {})
+				...(search.trim() ? { search } : {})
 			}
 		})
 
@@ -60,9 +55,8 @@ export const createNote = async (newNote: CreateNoteParams): Promise<Note> => {
 	return response.data
 }
 
-export const deleteNote = async (id: string): Promise<DeleteNoteResponse> => {
-	const response: AxiosResponse<DeleteNoteResponse> =
-		await api.delete<DeleteNoteResponse>(`/notes/${id}`)
+export const deleteNote = async (id: string): Promise<Note> => {
+	const response: AxiosResponse<Note> = await api.delete<Note>(`/notes/${id}`)
 
 	return response.data
 }

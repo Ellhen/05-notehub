@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, keepPreviousData } from '@tanstack/react-query'
 import { NoteList } from '../NoteList/NoteList'
 import { SearchBox } from '../SearchBox/SearchBox'
 import { Modal } from '../Modal/Modal'
@@ -28,7 +28,8 @@ function App() {
 				page,
 				perPage: PER_PAGE,
 				search
-			})
+			}),
+		placeholderData: keepPreviousData
 	})
 
 	const notes = data?.notes ?? []
